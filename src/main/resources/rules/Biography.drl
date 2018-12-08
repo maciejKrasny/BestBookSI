@@ -1,0 +1,41 @@
+//created on: 2018-12-06
+package rules;
+import com.sample.Question;
+import com.sample.FinalAnswer;
+import com.sample.Print;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+
+//list any import classes here.
+
+
+
+//declare any global variables here
+
+
+
+
+rule "BiographyYes"
+	when
+    	q : Question(getText() == "Biography?", getAnswer() == "YES")
+	then
+    
+	    FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("The Immortal Life of Henrietta Lacks; Rebecca Skloot");
+	    finalAnswer.getBookList().add("Persepolis; Marjane Satrapi");
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+end
+
+rule "BiographyNo"
+    //include attributes such as "salience" here...
+    when
+        q : Question(getText() == "Biography?", getAnswer() == "NO")
+    then
+        Question newQuestion = new Question("Grammar?");
+       	newQuestion.addYesNo();
+	    Print.showQuestion(newQuestion);
+		insert(newQuestion);
+
+end

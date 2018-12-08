@@ -1,0 +1,41 @@
+//created on: 2018-12-06
+package rules;
+import com.sample.Question;
+import com.sample.FinalAnswer;
+import com.sample.Print;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+
+//list any import classes here.
+
+
+
+//declare any global variables here
+
+
+
+
+rule "MysteryYes"
+	when
+    	q : Question(getText() == "Mystery?", getAnswer() == "YES")
+	then
+    
+	    FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("The Lovely Bones; Alice Sebold");
+	    finalAnswer.getBookList().add("The Thirteenth Tale; Diane Setterfield");
+	   	finalAnswer.setEnd(true);
+		insert(finalAnswer);
+end
+
+rule "MysteryNo"
+    //include attributes such as "salience" here...
+    when
+        q : Question(getText() == "Mystery?", getAnswer() == "NO")
+    then
+        Question newQuestion = new Question("Family?");
+       	newQuestion.addYesNo();
+	    Print.showQuestion(newQuestion);
+		insert(newQuestion);
+
+end

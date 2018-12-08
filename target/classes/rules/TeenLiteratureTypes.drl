@@ -1,0 +1,82 @@
+//created on: 2018-12-06
+package rules;
+import com.sample.Question;
+import com.sample.FinalAnswer;
+import com.sample.Print;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+
+//list any import classes here.
+
+
+
+//declare any global variables here
+
+
+
+
+rule "TeenLiteratureHistorical"
+	when
+    	q : Question(getText() == "What Kind of Teen Literature?", getAnswer() == "Historical")
+	then
+    
+	    FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("Clockwork Angel; Cassandra Clare");
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+end
+
+rule "TeenLiteratureThriller"
+    //include attributes such as "salience" here...
+    when
+        q : Question(getText() == "What Kind of Teen Literature?", getAnswer() == "Thriller")
+    then
+        FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("The Hunger Games; Suzanne Collins");
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+
+end
+
+rule "TeenLiteratureFantasy"
+    //include attributes such as "salience" here...
+    when
+        q : Question(getText() == "What Kind of Teen Literature?", getAnswer() == "Fantasy")
+    then
+        FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("Eragon; Christopher Paolini");
+	    finalAnswer.getBookList().add("Insurgent; Veronica Roth");
+	    finalAnswer.getBookList().add("City of Bones; Cassandra Clare");
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+
+end
+
+rule "TeenLiteratureRelationships"
+    //include attributes such as "salience" here...
+    when
+        q : Question(getText() == "What Kind of Teen Literature?", getAnswer() == "Relationships")
+    then
+        FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("The Fault in Our Stars; John Green");
+	    finalAnswer.getBookList().add("Looking for Alaska; John Green");	    
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+
+end
+
+rule "TeenLiteratureVampires"
+    //include attributes such as "salience" here...
+    when
+        q : Question(getText() == "What Kind of Teen Literature?", getAnswer() == "Vampires")
+    then
+        FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("Twilight; Stephenie Meyer");
+		finalAnswer.getBookList().add("Vampire Academy; Richelle Mead");
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+
+end
+
+

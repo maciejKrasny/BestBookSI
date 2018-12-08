@@ -1,0 +1,41 @@
+//created on: 2018-12-06
+package rules;
+import com.sample.Question;
+import com.sample.FinalAnswer;
+import com.sample.Print;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+
+//list any import classes here.
+
+
+
+//declare any global variables here
+
+
+
+
+rule "DiscoverANewCultureYes"
+	when
+    	q : Question(getText() == "Discover a New Culture?", getAnswer() == "YES")
+	then
+    
+	    Question newQuestion = new Question("What Kind of New Culture?");
+       	String[] types = {"Civil Rights","Epistolary","Japan","Historical","War","Romance"};
+       	newQuestion.addTypes(types);
+	    Print.showQuestion(newQuestion);
+		insert(newQuestion);
+end
+
+rule "DiscoverANewCultureNo"
+    //include attributes such as "salience" here...
+    when
+        q : Question(getText() == "Discover a New Culture?", getAnswer() == "NO")
+    then
+        Question newQuestion = new Question("How about a good Fantasy?");
+       	newQuestion.addYesNo();
+	    Print.showQuestion(newQuestion);
+		insert(newQuestion);
+
+end

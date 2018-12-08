@@ -1,0 +1,44 @@
+//created on: 2018-12-06
+package rules;
+import com.sample.Question;
+import com.sample.FinalAnswer;
+import com.sample.Print;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+
+//list any import classes here.
+
+
+
+//declare any global variables here
+
+
+
+
+rule "MagicalRealismYes"
+	when
+    	q : Question(getText() == "Magical Realism?", getAnswer() == "YES")
+	then
+    
+	    FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("The History of Love; Nicole Krauss");
+	    finalAnswer.getBookList().add("Extremely Loud and Incredibly Close; Jonathan Safran Foer");
+	    finalAnswer.getBookList().add("Life of Pi; Yann Martel");
+	    finalAnswer.getBookList().add("Everything is Illuminated; Jonathan Safran Foer");
+	       
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+end
+
+rule "MagicalRealismNo"
+    //include attributes such as "salience" here...
+    when
+        q : Question(getText() == "Magical Realism?", getAnswer() == "NO")
+    then
+        Question newQuestion = new Question("Comic Books?");
+       	newQuestion.addYesNo();
+	    Print.showQuestion(newQuestion);
+		insert(newQuestion);
+
+end

@@ -1,0 +1,44 @@
+//created on: 2018-12-06
+package rules;
+import com.sample.Question;
+import com.sample.FinalAnswer;
+import com.sample.Print;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+
+//list any import classes here.
+
+
+
+//declare any global variables here
+
+
+
+
+rule "BusinessYes"
+	when
+    	q : Question(getText() == "Business?", getAnswer() == "YES")
+	then
+    
+	    FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("The Five Dysfunction of a Team; Patrick Lencioni");
+	    finalAnswer.getBookList().add("Strengths Finder 2.0; Tom Rath");
+	    finalAnswer.getBookList().add("Lean In; Sheryl Sandberg");
+	    finalAnswer.getBookList().add("Good to Great; Jim Collins");
+	    finalAnswer.getBookList().add("The Power of Habits; Why We Do What We Do in Life and Business; Charles Duhigg");
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+end
+
+rule "BusinessNo"
+    //include attributes such as "salience" here...
+    when
+        q : Question(getText() == "Business?", getAnswer() == "NO")
+    then
+        FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getOut();
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+
+end

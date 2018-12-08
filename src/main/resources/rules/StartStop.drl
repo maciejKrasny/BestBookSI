@@ -1,0 +1,33 @@
+//created on: 2018-12-07
+package rules;
+import com.sample.Question;
+import com.sample.FinalAnswer;
+import com.sample.Print;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+//list any import classes here.
+
+
+
+//declare any global variables here
+
+
+
+rule "Start"
+	when
+    	q : Question(getText() == "", getAnswer() == "")
+	then
+	    Question newQuestion = new Question("Want some good Popular Fiction?");
+	    newQuestion.addYesNo();
+	    Print.showQuestion(newQuestion);
+	    insert(newQuestion);
+	    
+end
+
+rule "End"
+	when
+    	a : FinalAnswer(getEnd() == true)
+	then
+		Print.result(a.getBookList());
+end

@@ -1,0 +1,42 @@
+//created on: 2018-12-06
+package rules;
+import com.sample.Question;
+import com.sample.FinalAnswer;
+import com.sample.Print;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+
+//list any import classes here.
+
+
+
+//declare any global variables here
+
+
+
+
+rule "ThrillersYes"
+	when
+    	q : Question(getText() == "Thrillers?", getAnswer() == "YES")
+	then
+    
+	    FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("Befor I Go to Sleep; S.J. Watson");
+	    finalAnswer.getBookList().add("Nineteen Minutes; Jodi Picoult");
+	    finalAnswer.getBookList().add("The Girl with the Dragon Tattoo; Stieg Larsson");
+	   	finalAnswer.setEnd(true);
+		insert(finalAnswer);
+end
+
+rule "ThrillersNo"
+    //include attributes such as "salience" here...
+    when
+        q : Question(getText() == "Thrillers?", getAnswer() == "NO")
+    then
+        Question newQuestion = new Question("Mystery?");
+       	newQuestion.addYesNo();
+	    Print.showQuestion(newQuestion);
+		insert(newQuestion);
+
+end

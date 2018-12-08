@@ -1,0 +1,102 @@
+//created on: 2018-12-06
+package rules;
+import com.sample.Question;
+import com.sample.FinalAnswer;
+import com.sample.Print;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+
+//list any import classes here.
+
+
+
+//declare any global variables here
+
+
+
+
+rule "HowAboutAGoodFantasyEpic"
+	when
+    	q : Question(getText() == "What Kind of Fantasy?", getAnswer() == "Epic")
+	then
+    
+	    FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("A Dance With Dragons; George R. R. Martin");
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+end
+
+rule "HowAboutAGoodFantasyVideoGames"
+    //include attributes such as "salience" here...
+    when
+        q : Question(getText() == "What Kind of Fantasy?", getAnswer() == "Video Games")
+    then
+        FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("Ready Player One; Ernest Cline");
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+
+end
+
+rule "HowAboutAGoodFantasyVampires"
+    //include attributes such as "salience" here...
+    when
+        q : Question(getText() == "What Kind of Fantasy?", getAnswer() == "Vampires")
+    then
+        FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("A Discovery of Witches; Deborah Harkness");
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+
+end
+
+rule "HowAboutAGoodFantasyHistorical"
+    //include attributes such as "salience" here...
+    when
+        q : Question(getText() == "What Kind of Fantasy?", getAnswer() == "Historical")
+    then
+        FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("Cloud Atlas; David Mitchell");    
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+
+end
+
+rule "HowAboutAGoodFantasyMagic"
+    //include attributes such as "salience" here...
+    when
+        q : Question(getText() == "What Kind of Fantasy?", getAnswer() == "Magic")
+    then
+        FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("Jonathan Strange & Mr. Norrell; Susanna Clarke");
+	    finalAnswer.getBookList().add("The Name of the Wind; Patrick Rothfuss");
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+
+end
+
+
+rule "HowAboutAGoodFantasyLiterary"
+    //include attributes such as "salience" here...
+    when
+        q : Question(getText() == "What Kind of Fantasy?", getAnswer() == "Literary")
+    then
+        FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("Kafka on the Shore; Haruki Murakami");
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+
+end
+
+rule "HowAboutAGoodFantasyRomance"
+    //include attributes such as "salience" here...
+    when
+        q : Question(getText() == "What Kind of Fantasy?", getAnswer() == "Romance")
+    then
+        FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("Matched; Ally Condie");
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+
+end

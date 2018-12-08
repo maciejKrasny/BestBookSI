@@ -1,0 +1,45 @@
+//created on: 2018-12-06
+package rules;
+import com.sample.Question;
+import com.sample.FinalAnswer;
+import com.sample.Print;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+
+//list any import classes here.
+
+
+
+//declare any global variables here
+
+
+
+
+rule "LookingForMysterySuspense"
+	when
+    	q : Question(getText() == "What Kind of Mystery?", getAnswer() == "Suspense")
+	then
+    
+	    FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("Atonement; Ian McEwan");
+	    finalAnswer.getBookList().add("The Traitors's Emblem; Juan Gomez-Jurado");
+	    finalAnswer.getBookList().add("The Shadow of the Wind; Carlos Ruiz Zafron");
+	    finalAnswer.getBookList().add("Bel Canto; Ann Patchett");
+	    finalAnswer.getBookList().add("The Curious Incident of the Dog in the Night-Time; Mark Haddon");	    
+	       
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+end
+
+rule "LookingForMysteryLiterary"
+    //include attributes such as "salience" here...
+    when
+        q : Question(getText() == "What Kind of Mystery?", getAnswer() == "Literary")
+    then
+        FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("The Sweetness at the Bottom of the Pie; Alan Bradley");
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+
+end

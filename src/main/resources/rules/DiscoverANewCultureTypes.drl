@@ -1,0 +1,91 @@
+//created on: 2018-12-06
+package rules;
+import com.sample.Question;
+import com.sample.FinalAnswer;
+import com.sample.Print;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+
+//list any import classes here.
+
+
+
+//declare any global variables here
+
+
+
+
+rule "DiscoverANewCultureCivilRights"
+	when
+    	q : Question(getText() == "What Kind of New Culture?", getAnswer() == "Civil Rights")
+	then
+    
+	    FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("The Help; Kathyrn Stockett");
+	    finalAnswer.getBookList().add("The Secret Life of Bees; Sue Monk Kidd");
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+end
+
+rule "DiscoverANewCultureEpistolary"
+    //include attributes such as "salience" here...
+    when
+        q : Question(getText() == "What Kind of New Culture?", getAnswer() == "Epistolary")
+    then
+        FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("The Guernsey Literary and Potato Peel Pie Society; Annie Barrows");
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+
+end
+
+rule "DiscoverANewCultureJapan"
+    //include attributes such as "salience" here...
+    when
+        q : Question(getText() == "What Kind of New Culture?", getAnswer() == "Japan")
+    then
+        FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("The Thousand Autumns of Jacob De Zoet; David Mitchell");
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+
+end
+
+rule "DiscoverANewCultureHistorical"
+    //include attributes such as "salience" here...
+    when
+        q : Question(getText() == "What Kind of New Culture?", getAnswer() == "Historical")
+    then
+        FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("The Kite Runner; Khaled Hosseini");
+	    finalAnswer.getBookList().add("A Thousand Splendid Suns; Khaled Hosseini");	    
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+
+end
+
+rule "DiscoverANewCultureWar"
+    //include attributes such as "salience" here...
+    when
+        q : Question(getText() == "What Kind of New Culture?", getAnswer() == "War")
+    then
+        FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("Fall of Giants; Ken Follett");
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+
+end
+
+
+rule "DiscoverANewCultureRomance"
+    //include attributes such as "salience" here...
+    when
+        q : Question(getText() == "What Kind of New Culture?", getAnswer() == "Romance")
+    then
+        FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("Water for Elephants; Sara Gruen");
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+
+end

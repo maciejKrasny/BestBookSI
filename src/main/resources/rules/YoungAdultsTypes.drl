@@ -1,0 +1,40 @@
+//created on: 2018-12-06
+package rules;
+import com.sample.Question;
+import com.sample.FinalAnswer;
+import com.sample.Print;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+
+//list any import classes here.
+
+
+
+//declare any global variables here
+
+
+
+
+rule "YoungAdultsHistorical"
+	when
+    	q : Question(getText() == "What Kind of Book for Young Adults?", getAnswer() == "Historical")
+	then
+    
+	    FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("Diary of a Wimpy Kid; Jeff Kinney");	    
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+end
+
+rule "YoungAdultsHumor"
+    //include attributes such as "salience" here...
+    when
+        q : Question(getText() == "What Kind of Book for Young Adults?", getAnswer() == "Humor")
+    then
+        FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("The Book Thief; Markus Zusak");
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+
+end

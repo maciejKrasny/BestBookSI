@@ -1,0 +1,41 @@
+//created on: 2018-12-06
+package rules;
+import com.sample.Question;
+import com.sample.FinalAnswer;
+import com.sample.Print;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+
+//list any import classes here.
+
+
+
+//declare any global variables here
+
+
+
+
+rule "InspirationalYes"
+	when
+    	q : Question(getText() == "Inspirational?", getAnswer() == "YES")
+	then
+    
+	    FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("The Five People You Meet in Heaven; Mitch Albom");
+	    finalAnswer.getBookList().add("Daring Greatly: How the Courage to Be Vulnerable Transforms the Way We Live, Love, Parent and Lead; Brene Brown");
+	   	finalAnswer.setEnd(true);
+		insert(finalAnswer);
+end
+
+rule "InspirationalNo"
+    //include attributes such as "salience" here...
+    when
+        q : Question(getText() == "Inspirational?", getAnswer() == "NO")
+    then
+        Question newQuestion = new Question("Business?");
+       	newQuestion.addYesNo();
+	    Print.showQuestion(newQuestion);
+		insert(newQuestion);
+
+end

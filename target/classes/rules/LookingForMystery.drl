@@ -1,0 +1,41 @@
+//created on: 2018-12-06
+package rules;
+import com.sample.Question;
+import com.sample.FinalAnswer;
+import com.sample.Print;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+
+//list any import classes here.
+
+
+
+//declare any global variables here
+
+
+
+
+rule "LookingForMysteryYes"
+	when
+    	q : Question(getText() == "Looking for Mystery?", getAnswer() == "YES")
+	then
+    
+	    Question newQuestion = new Question("What Kind of Mystery?");
+       	String[] types = {"Suspense","Literary"};
+       	newQuestion.addTypes(types);
+	    Print.showQuestion(newQuestion);
+		insert(newQuestion);
+end
+
+rule "LookingForMysteryNo"
+    //include attributes such as "salience" here...
+    when
+        q : Question(getText() == "Looking for Mystery?", getAnswer() == "NO")
+    then
+        Question newQuestion = new Question("Baseball?");
+       	newQuestion.addYesNo();
+	    Print.showQuestion(newQuestion);
+		insert(newQuestion);
+
+end

@@ -1,0 +1,38 @@
+//created on: 2018-12-06
+package rules;
+import com.sample.Question;
+import com.sample.Print;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+
+//list any import classes here.
+
+
+
+//declare any global variables here
+
+
+
+
+rule "FictionForKidsYes"
+
+   when
+    q : Question(getText() == "Fiction for Kids?", getAnswer() == "YES")
+   then
+	    Question newQuestion = new Question("Young Adults?");
+	    newQuestion.addYesNo();
+	    Print.showQuestion(newQuestion);
+		insert(newQuestion);
+end
+
+rule "FictionForKidsNo"
+    when
+        q : Question(getText() == "Fiction for Kids?", getAnswer() == "NO")
+    then
+        Question newQuestion = new Question("Looking for Nonfiction?");
+       	newQuestion.addYesNo();
+	    Print.showQuestion(newQuestion);
+		insert(newQuestion);
+
+end

@@ -1,0 +1,67 @@
+//created on: 2018-12-06
+package rules;
+import com.sample.Question;
+import com.sample.FinalAnswer;
+import com.sample.Print;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+
+//list any import classes here.
+
+
+
+//declare any global variables here
+
+
+
+
+rule "ChildrenLiteratureComingOfAge"
+	when
+    	q : Question(getText() == "What Kind of Children's Literarure?", getAnswer() == "Coming of Age")
+	then
+    
+	    FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("Wonder; R. J. Palacio");	    
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+end
+
+rule "ChildrenLiteratureThriller"
+    //include attributes such as "salience" here...
+    when
+        q : Question(getText() == "What Kind of Children's Literarure?", getAnswer() == "Thriller")
+    then
+        FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("The Lightning Thief; Rick Riordan");
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+
+end
+
+rule "ChildrenLiteraturePeril"
+    //include attributes such as "salience" here...
+    when
+        q : Question(getText() == "What Kind of Children's Literarure?", getAnswer() == "Peril")
+    then
+        FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("A Series of Unfortunate Events: The End; Lemony Snicket");
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+
+end
+
+
+rule "ChildrenLiteratureFantasy"
+    //include attributes such as "salience" here...
+    when
+        q : Question(getText() == "What Kind of Children's Literarure?", getAnswer() == "Fantasy")
+    then
+        FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("Harry Potter and the Deathy Hollows; J. K. Rowling");	    
+	   	finalAnswer.getBookList().add("Coraline; Neil Gaiman");
+	   	finalAnswer.getBookList().add("The Graveyard Book; Neil Gaiman"); 
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+
+end

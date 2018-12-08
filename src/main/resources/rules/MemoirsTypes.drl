@@ -1,0 +1,75 @@
+//created on: 2018-12-06
+package rules;
+import com.sample.Question;
+import com.sample.FinalAnswer;
+import com.sample.Print;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+
+//list any import classes here.
+
+
+
+//declare any global variables here
+
+
+
+
+rule "MemoirsFamily"
+	when
+    	q : Question(getText() == "What Kind of Memoirs?", getAnswer() == "Family")
+	then
+    
+	    FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("The Glass Castle; Jeannette Walls");	    
+		finalAnswer.getBookList().add("A Heartbreaking Work of Staggering Genius; Dave Eggers");
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+end
+
+rule "MemoirsHumor"
+    //include attributes such as "salience" here...
+    when
+        q : Question(getText() == "What Kind of Memoirs?", getAnswer() == "Humor")
+    then
+        FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("Bossypants; Tina Fey");
+	    finalAnswer.getBookList().add("Running with Scissors; Augusten Burroughs");
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+end
+
+rule "MemoirsMedical"
+    //include attributes such as "salience" here...
+    when
+        q : Question(getText() == "What Kind of Memoirs?", getAnswer() == "Medical")
+    then
+        FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("Proof of Heaven: A Neurosurgeon's Journey into the Afterlife; Eben Alexander");
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+end
+
+rule "MemoirsCurrentEvents"
+    //include attributes such as "salience" here...
+    when
+        q : Question(getText() == "What Kind of Memoirs?", getAnswer() == "Current Events")
+    then
+        FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("Three Cups of Tea; Greg Mortenson");
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+end
+
+rule "MemoirsSelfFulfillment"
+    //include attributes such as "salience" here...
+    when
+        q : Question(getText() == "What Kind of Memoirs?", getAnswer() == "Self-Fulfillment")
+    then
+        FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("Eat, Pray, Love; Elizabeth Gilbert");
+		finalAnswer.setEnd(true);
+		insert(finalAnswer);
+
+end

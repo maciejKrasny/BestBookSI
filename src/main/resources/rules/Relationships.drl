@@ -1,0 +1,40 @@
+//created on: 2018-12-06
+package rules;
+import com.sample.Question;
+import com.sample.FinalAnswer;
+import com.sample.Print;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+
+//list any import classes here.
+
+
+
+//declare any global variables here
+
+
+
+
+rule "RelationshipsYes"
+	when
+    	q : Question(getText() == "Relationships?", getAnswer() == "YES")
+	then
+    
+	    FinalAnswer finalAnswer = new FinalAnswer();
+	    finalAnswer.getBookList().add("Quiet: The Power of Introverts in a World That Can't Stop Talking; Susan Cain");
+	    finalAnswer.setEnd(true);
+		insert(finalAnswer);
+end
+
+rule "RelationshipsNo"
+    //include attributes such as "salience" here...
+    when
+        q : Question(getText() == "Relationships?", getAnswer() == "NO")
+    then
+        Question newQuestion = new Question("Inspirational?");
+       	newQuestion.addYesNo();
+	    Print.showQuestion(newQuestion);
+		insert(newQuestion);
+
+end
