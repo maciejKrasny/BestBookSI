@@ -24,6 +24,7 @@ rule "SuspenseYes"
 	    FinalAnswer finalAnswer = new FinalAnswer();
 	    finalAnswer.getBookList().add("Gone Girl; Gilian Flynn");
 	    finalAnswer.getBookList().add("The Da Vinci Code; Dan Brown");
+		finalAnswer.getBookList().add("Joyland; Stephen King");
 		finalAnswer.setEnd(true);
 		insert(finalAnswer);
 end
